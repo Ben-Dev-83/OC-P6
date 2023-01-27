@@ -21,7 +21,7 @@ mongoose.connect('mongodb+srv://Benjamin-83:EkiyyyAEgf1zpxJ9@piiquante.3ruxlci.m
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use(express.json());
 app.use('/api/auth', user)
-app.use('/api', sauce)
+app.use('/api/sauces', sauce)
 
 app.use((req, res) => {
   res.json({ message: 'Votre requête a bien été reçue !' }); 
