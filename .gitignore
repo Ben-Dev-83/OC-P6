@@ -42,4 +42,4 @@ testem.log
 Thumbs.db
 
 # Images
-src/app/backend/images/
+/backend/images/
