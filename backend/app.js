@@ -1,8 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
-const user = require('./routes/user')
-const sauce = require('./routes/sauce')
+const userRoute = require('./routes/user');
+const sauceRoute = require('./routes/sauce');
 const app = express();
 
 mongoose.connect('mongodb+srv://Benjamin-83:EkiyyyAEgf1zpxJ9@piiquante.3ruxlci.mongodb.net/?retryWrites=true&w=majority',
@@ -18,13 +18,10 @@ mongoose.connect('mongodb+srv://Benjamin-83:EkiyyyAEgf1zpxJ9@piiquante.3ruxlci.m
     next();
   });
   
-app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use(express.json());
-app.use('/api/auth', user)
-app.use('/api/sauces', sauce)
 
-app.use((req, res) => {
-  res.json({ message: 'Votre requête a bien été reçue !' }); 
-});
+app.use('/images', express.static(path.join(__dirname, 'images')));
+app.use('/api/auth', userRoute);
+app.use('/api/sauces', sauceRoute);
 
 module.exports = app;
